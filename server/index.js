@@ -9,12 +9,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.post('/repos', function (req, res) {
   let username = req.body.username;
-  getReposByUsername.getReposByUsername(username, (data)=> {
-    //console.log(JSON.parse(data));
-    var result = save(JSON.parse(data));
-      console.log(result);
+    getReposByUsername.getReposByUsername(username, (data)=> {
+      let obj = JSON.parse(data);
+      for (var key in obj) {
+        save(obj[key], (result) => {
+        res.end(result);
+        });
+      }
+    });
 
-  });
+
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then

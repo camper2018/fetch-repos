@@ -6,32 +6,32 @@ let repoSchema = mongoose.Schema({
   id : {type: Number},
   name: {type: String},
   full_name: {type: String},
-  owner:{ login: {type:String}, id: {type:Number}, avatar_url: {tpye: String}, url: {type: String}, starred_url:{type:String}, repos_url: {type:String},type:{type : String}},
+  owner:{ login: {type:String}},
   watchers_count: {type: Number},
   created_at: {type: Date},
   updated_at: {type: Date},
-  stargazers_count: {type: Number}
+  stargazers_count: {type: Number},
+  git_url: {type: String},
+  forks_count: {type: Number}
 
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (data ) => {
+let save = (data , cb) => {
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
-  // var Repo = new Repo(data);
-  // Repo.save((err, result) => {
-  //   if (err)  {
-  //     return console.error(err);
-  //   }
-  //   return result;
-
-  // });
-  Repo.create(data).then((result)=> {
-    console.log('success', result);
+  Repo.findOneAndUpdate({id: data.id}, {name: data.name, full_name: data.full_name,owner : {login: data.owner.login}, watchers_count: data.watchers_count, created_at: data.created_at,updated_at: data.updated_at,stargazers_count: data.stargazers_count, git_url: data.git_url,forks_count: data.forks_count}, {upsert: true}).exec((err, res)=> {
+    if (err) {
+      console.log(err);
+    }
+    cb('Repos inserted successfully');
   });
 
 }
 
+
+
 module.exports.save = save;
+//module.exports.update = update;
