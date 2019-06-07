@@ -22,7 +22,7 @@ const RepoList = (props) => {
         <th>Name</th>
         <th>ID</th>
         <th>Owner</th>
-        <th>Git URL</th>
+        <th>HTML URL</th>
         <th>Created At</th>
         <th>Updated At</th>
         <th>Forks Count</th>

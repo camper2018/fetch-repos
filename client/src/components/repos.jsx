@@ -6,7 +6,7 @@ const Repos = ({repo}) => (
     <td >{repo.name}</td>
     <td >{repo.id}</td>
     <td >{repo.owner.login}</td>
-    <td >{repo.git_url}</td>
+    <td ><a href={repo.html_url}>{repo.html_url}</a></td>
     <td >{repo.created_at}</td>
     <td >{repo.updated_at}</td>
     <td >{repo.forks_count}</td>
