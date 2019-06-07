@@ -28,7 +28,16 @@ class App extends React.Component {
       }
 
     });
+    $.ajax({
+      url:'http://127.0.0.1:1128/repos',
+      method: 'GET',
+      success: (data) => {
+        this.setState({
+          repos: data
+        },()=>{});
+      }
 
+    })
 
   }
 
