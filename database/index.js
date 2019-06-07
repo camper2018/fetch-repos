@@ -28,10 +28,18 @@ let save = (data , cb) => {
     }
     cb('Repos inserted successfully');
   });
+}
+let findRepos = ( cb) => {
+  Repo.find( ).limit(25).sort( { watchers_count: -1} ).exec((err, result) =>{
+    if (err) {
+      console.log(err);
+    }
+    cb(result);
+  });
 
 }
 
 
 
 module.exports.save = save;
-//module.exports.update = update;
+module.exports.findRepos = findRepos;
