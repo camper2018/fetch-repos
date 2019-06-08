@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fetcher');
-
+let Mongo_url = process.env.MONGODB_URI;
+ if (Mongo_url == null ||Mongo_url == "" ) {
+   Mongo_url = 'mongodb://localhost/fetcher';
+ }
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
   id : {type: Number},

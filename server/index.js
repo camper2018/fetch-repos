@@ -36,12 +36,10 @@ app.get('/cool', (req, res) => res.send(cool()));
 
 //let port = 3000;
 
-// app.listen(port, function() {
-//   console.log(`listening on port ${port}`);
-// });
-
 let port = process.env.PORT ;
 if (port == null || port == "") {
   port = 1128;
 }
-app.listen(port);
+app.listen(port, function() {
+  console.log(`listening on port ${port}`);
+});
