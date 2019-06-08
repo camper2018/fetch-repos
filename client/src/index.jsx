@@ -19,7 +19,8 @@ class App extends React.Component {
 
     // TODO
     $.ajax ({
-      url:'http://127.0.0.1:1128/repos',
+      //url:'http://127.0.0.1:1128/repos',
+      url:'https://full-stack-repos-app.herokuapp.com/repos',
       method: 'POST',
       data: data,
       dataType:'json',
@@ -29,7 +30,7 @@ class App extends React.Component {
 
     });
     $.ajax({
-      url:'http://127.0.0.1:1128/repos',
+      url:'/repos',
       method: 'GET',
       success: (data) => {
         this.setState({
