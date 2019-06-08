@@ -34,8 +34,6 @@ app.get('/repos', function (req, res) {
 });
 app.get('/cool', (req, res) => res.send(cool()));
 
-//let port = 3000;
-
 let port = process.env.PORT ;
 if (port == null || port == "") {
   port = 1128;
