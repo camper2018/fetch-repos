@@ -1,3 +1,4 @@
+const cool = require('cool-ascii-faces')
 const express = require('express');
 const bodyParser = require('body-parser');
 const getReposByUsername = require('../helpers/github');
@@ -31,8 +32,9 @@ app.get('/repos', function (req, res) {
      res.send(result);
     });
 });
+app.get('/cool', (req, res) => res.send(cool()));
 
-let port = 1128;
+let port = 3000;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
