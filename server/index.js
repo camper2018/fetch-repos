@@ -1,4 +1,4 @@
-const cool = require('cool-ascii-faces')
+const cool = require('cool-ascii-faces');
 const express = require('express');
 const bodyParser = require('body-parser');
 const getReposByUsername = require('../helpers/github');
