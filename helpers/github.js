@@ -12,9 +12,11 @@ let getReposByUsername = (username, callback) => {
     url: ` https://api.github.com/users/${username}/repos`,
     headers: {
       'User-Agent': 'request',
+      //'Authorization': `token ${process.env.TOKEN}`
       'Authorization': `token ${process.env.TOKEN}`
     }
   };
+  console.log('TOKEN', process.env.TOKEN);
   request(options, function(error, response, body) {
     if (error) {
       console.error(error);

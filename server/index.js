@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config();
 const cool = require('cool-ascii-faces');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,6 +9,13 @@ let app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+// app.get('/', function (req, res) {
+//   findRepos((result) => {
+//     res.send(result);
+//    });
+// });
+
 app.post('/repos', function (req, res) {
   // TODO - your code here!
   // This route should take the github username provided
@@ -16,12 +24,13 @@ app.post('/repos', function (req, res) {
 
   let username = req.body.username;
     getReposByUsername.getReposByUsername(username, (data)=> {
+      //console.log('data', data);
       let obj = JSON.parse(data);
       for (var key in obj) {
         save(obj[key], (result) => {
-        res.end(result);
+        res.end(JSON.stringify({key: result}));
         });
-      }
+     }
     });
 });
 

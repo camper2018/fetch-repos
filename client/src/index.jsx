@@ -26,19 +26,24 @@ class App extends React.Component {
       dataType:'json',
       success: (data) => {
         console.log('success sending request', data);
+        $.ajax({
+          url:'/repos',
+          method: 'GET',
+          success: (data) => {
+            this.setState({
+              repos: data
+            },()=>{});
+          }
+
+        })
+
+      },
+      error: (error) => {
+        console.log(error);
       }
 
     });
-    $.ajax({
-      url:'/repos',
-      method: 'GET',
-      success: (data) => {
-        this.setState({
-          repos: data
-        },()=>{});
-      }
 
-    })
 
   }
 
